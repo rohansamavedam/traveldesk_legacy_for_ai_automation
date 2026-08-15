@@ -1,0 +1,37 @@
+<h1>TravelDesk Legacy</h1>
+
+<h2>Flight Availability Results</h2>
+
+<% if @flights.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>FLIGHT</th>
+        <th>ORIGIN</th>
+        <th>DESTINATION</th>
+        <th>DEPARTURE</th>
+        <th>ARRIVAL</th>
+        <th>CABIN</th>
+        <th>FARE</th>
+        <th>SEATS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @flights.each do |flight| %>
+        <tr>
+          <td><%= flight.flight_number %></td>
+          <td><%= flight.origin %></td>
+          <td><%= flight.destination %></td>
+          <td><%= flight.departure_at.strftime("%I:%M %p") %></td>
+          <td><%= flight.arrival_at.strftime("%I:%M %p") %></td>
+          <td><%= flight.cabin %></td>
+          <td>$<%= format("%.2f", flight.fare_cents / 100.0) %></td>
+          <td><%= flight.seats_available %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No flights found for the requested itinerary.</p>
+<% end %>

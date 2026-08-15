@@ -1,10 +1,114 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+body {
+  margin: 0;
+  background: #d9d9d9;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111;
+  font-size: 14px;
+}
+
+h1 {
+  margin: 0;
+  padding: 12px 18px;
+  background: #17365d;
+  color: white;
+  font-family: "Courier New", monospace;
+  font-size: 24px;
+  border-bottom: 4px solid #8faadc;
+}
+
+h2 {
+  margin: 0 0 18px 0;
+  padding: 7px 10px;
+  background: #b4c6e7;
+  border: 1px solid #666;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+body > main,
+body > form {
+  margin: 20px;
+}
+
+form {
+  width: 520px;
+  margin: 25px;
+  padding: 18px;
+  background: #f3f0e4;
+  border: 2px solid #666;
+  box-shadow: 2px 2px 0 #999;
+}
+
+form p {
+  margin: 0 0 14px 0;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 240px;
+  padding: 5px;
+  border: 2px inset #ccc;
+  background: white;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  padding: 7px 16px;
+  background: #d6d6d6;
+  border: 2px outset #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+input[type="submit"]:active {
+  border-style: inset;
+}
+
+table {
+  width: calc(100% - 50px);
+  margin: 25px;
+  border-collapse: collapse;
+  background: #f3f0e4;
+  border: 2px solid #666;
+  font-family: "Courier New", monospace;
+}
+
+th {
+  background: #17365d;
+  color: white;
+  padding: 8px;
+  border: 1px solid #666;
+  text-align: left;
+  font-size: 12px;
+}
+
+td {
+  padding: 8px;
+  border: 1px solid #888;
+  background: #fffef7;
+}
+
+tbody tr:nth-child(even) td {
+  background: #e9e6d8;
+}
+
+body > p {
+  margin: 25px;
+  padding: 15px;
+  width: fit-content;
+  background: #fff4c2;
+  border: 2px solid #8a7a3c;
+  font-weight: bold;
+}

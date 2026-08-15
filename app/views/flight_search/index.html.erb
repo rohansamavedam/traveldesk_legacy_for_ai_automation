@@ -1,0 +1,27 @@
+<h1>TravelDesk Legacy</h1>
+
+<h2>Flight Availability</h2>
+
+<%= form_with url: "/flights/results", method: :get, local: true do %>
+  <p>
+    <label>Origin</label><br>
+    <%= text_field_tag :origin %>
+  </p>
+
+  <p>
+    <label>Destination</label><br>
+    <%= text_field_tag :destination %>
+  </p>
+
+  <p>
+    <label>Departure Date</label><br>
+    <%= date_field_tag :departure_date %>
+  </p>
+
+  <p>
+    <label>Cabin</label><br>
+    <%= select_tag :cabin, options_for_select(["Economy", "Business"]) %>
+  </p>
+
+  <%= submit_tag "Display Availability" %>
+<% end %>
