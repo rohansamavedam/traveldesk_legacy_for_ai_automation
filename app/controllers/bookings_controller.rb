@@ -11,14 +11,34 @@ class BookingsController < ApplicationController
       render :temporary_error
       return
     end
+
+    if @flight.status == "permission_denied"
+      render :permission_denied
+      return
+    end
   end
 
   def review
     @flight = Flight.find(params[:flight_id])
 
-    @first_name = params[:first_name]
-    @last_name = params[:last_name]
-    @email = params[:email]
+    @booking = Booking.new(
+      flight: @flight,
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      quoted_fare_cents: @flight.fare_cents,
+      status: "pending"
+    )
+
+    unless @booking.valid?
+      flash.now[:alert] = @booking.errors.full_messages.join(", ")
+      render :new, status: :unprocessable_entity
+      return
+    end
+
+    @first_name = @booking.first_name
+    @last_name = @booking.last_name
+    @email = @booking.email
 
     @fare_changed = @flight.status == "fare_changed"
   end
