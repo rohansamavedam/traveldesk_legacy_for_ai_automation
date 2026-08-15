@@ -1,0 +1,26 @@
+<h1>TravelDesk Legacy</h1>
+
+<h2>Booking Confirmation</h2>
+
+<div class="booking-summary">
+  <p><strong>Reservation ID:</strong> TRV-<%= @booking.id.to_s.rjust(5, "0") %></p>
+
+  <p><strong>Status:</strong> <%= @booking.status.upcase %></p>
+
+  <p><strong>Flight:</strong> <%= @flight.flight_number %></p>
+
+  <p>
+    <strong>Route:</strong>
+    <%= @flight.origin %> → <%= @flight.destination %>
+  </p>
+
+  <p>
+    <strong>Traveler:</strong>
+    <%= @booking.first_name %> <%= @booking.last_name %>
+  </p>
+
+  <p>
+    <strong>Fare:</strong>
+    $<%= format("%.2f", @booking.quoted_fare_cents / 100.0) %>
+  </p>
+</div>

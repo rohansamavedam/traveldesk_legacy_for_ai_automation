@@ -1,0 +1,31 @@
+<h1>TravelDesk Legacy</h1>
+
+<h2>Traveler Information</h2>
+
+<div class="booking-summary">
+  <p><strong>Selected Flight:</strong> <%= @flight.flight_number %></p>
+  <p><strong>Route:</strong> <%= @flight.origin %> → <%= @flight.destination %></p>
+  <p><strong>Departure:</strong> <%= @flight.departure_at.strftime("%m/%d/%Y %I:%M %p") %></p>
+  <p><strong>Fare:</strong> $<%= format("%.2f", @flight.fare_cents / 100.0) %></p>
+</div>
+
+<%= form_with url: "/bookings/review", method: :post, local: true, data: { turbo: false } do %>
+  <%= hidden_field_tag :flight_id, @flight.id %>
+
+  <p>
+    <label>First Name</label><br>
+    <%= text_field_tag :first_name %>
+  </p>
+
+  <p>
+    <label>Last Name</label><br>
+    <%= text_field_tag :last_name %>
+  </p>
+
+  <p>
+    <label>Email</label><br>
+    <%= text_field_tag :email %>
+  </p>
+
+  <%= submit_tag "Continue to Review" %>
+<% end %>

@@ -14,6 +14,7 @@
         <th>CABIN</th>
         <th>FARE</th>
         <th>SEATS</th>
+        <th>ACTION</th>
       </tr>
     </thead>
 
@@ -28,6 +29,7 @@
           <td><%= flight.cabin %></td>
           <td>$<%= format("%.2f", flight.fare_cents / 100.0) %></td>
           <td><%= flight.seats_available %></td>
+          <td><%= link_to "SELECT", "/bookings/new?flight_id=#{flight.id}" %></td>
         </tr>
       <% end %>
     </tbody>
