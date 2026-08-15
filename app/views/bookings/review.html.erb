@@ -2,6 +2,12 @@
 
 <h2>Booking Review</h2>
 
+<% if @fare_changed %>
+  <div class="alert-message">
+    FARE UPDATE NOTICE: The previously displayed fare is no longer available. Please review the updated fare before continuing.
+  </div>
+<% end %>
+
 <div class="booking-summary">
   <p><strong>Flight:</strong> <%= @flight.flight_number %></p>
 
@@ -25,10 +31,22 @@
     <%= @email %>
   </p>
 
-  <p>
-    <strong>Total Fare:</strong>
-    $<%= format("%.2f", @flight.fare_cents / 100.0) %>
-  </p>
+  <% if @fare_changed %>
+    <p>
+      <strong>Previous Fare:</strong>
+      $<%= format("%.2f", @flight.fare_cents / 100.0) %>
+    </p>
+
+    <p>
+      <strong>Current Fare:</strong>
+      $<%= format("%.2f", @flight.updated_fare_cents / 100.0) %>
+    </p>
+  <% else %>
+    <p>
+      <strong>Total Fare:</strong>
+      $<%= format("%.2f", @flight.fare_cents / 100.0) %>
+    </p>
+  <% end %>
 </div>
 
 <%= form_with url: "/bookings/confirm", method: :post, local: true, data: { turbo: false } do %>

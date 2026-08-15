@@ -1,0 +1,11 @@
+<h1>TravelDesk Legacy</h1>
+
+<h2>System Message</h2>
+
+<div class="alert-message">
+  TEMPORARY SYSTEM ERROR: Flight details could not be loaded. Please try again.
+</div>
+
+<p>
+  <%= link_to "RETRY", "/bookings/new?flight_id=#{@flight.id}&retry=true" %>
+</p>

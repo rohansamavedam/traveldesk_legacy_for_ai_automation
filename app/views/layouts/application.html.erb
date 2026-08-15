@@ -24,6 +24,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page-content">
+      <% if alert %>
+        <div class="alert-message">
+          <%= alert %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
